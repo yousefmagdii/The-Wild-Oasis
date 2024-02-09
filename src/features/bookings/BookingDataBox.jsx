@@ -116,7 +116,7 @@ function BookingDataBox({ booking }) {
     observations,
     isPaid,
     guests: { fullName: guestName, email, country, countryFlag, nationalID },
-    cabins: { name: cabinName },
+    cabin: { name: cabinName },
   } = booking;
 
   return (
@@ -173,7 +173,7 @@ function BookingDataBox({ booking }) {
               )} breakfast)`}
           </DataItem>
 
-          <p>{isPaid ? "Paid" : "Will pay at property"}</p>
+          <p>${isPaid ? "Paid" : "Will pay at property"}</p>
         </Price>
       </Section>
 

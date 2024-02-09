@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { ModalContext } from "../ui/Modal";
 
-function useCloseModal(close) {
+function useCloseModal(close, listenCapturing = true) {
   const ref = useRef();
   useEffect(
     function () {
@@ -11,11 +11,12 @@ function useCloseModal(close) {
           close();
         }
       }
-      document.addEventListener("click", handleClick, true);
+      document.addEventListener("click", handleClick, listenCapturing);
 
-      return () => document.removeEventListener("click", handleClick, true);
+      return () =>
+        document.removeEventListener("click", handleClick, listenCapturing);
     },
-    [close]
+    [close, listenCapturing]
   );
 
   return ref;
